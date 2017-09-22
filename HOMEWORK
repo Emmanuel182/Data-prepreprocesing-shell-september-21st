@@ -1,0 +1,73 @@
+//Jairo Ivan Hau Noh
+//Universidad Politécnica de Yucatán
+//PERDON POR LA TARDANZA PROFE NO BUSCABA COMO SUBIRLO
+
+//I'm going to show you the tools I have been working with so far!
+//This are some examples done in the classeroom
+
+//this shows a list of ten lines
+seq -f "Line %g" 10 | tee lines
+
+//shoiwng 3 lines
+< lines head -n 3
+head -n3 lines 
+< lines sed -n '1,3'
+< lines awk 'NR <= 3'
+
+//showing lines from 8 to 10
+< lines tall -n 3 
+
+//showing lines since 4 to 10
+< lines tall -n +4
+< lines sed '1,3d'
+
+//showing lines since 4 to 6
+< lines awk '(NR>3)&&(NR<7)'
+
+//showing only the impairs lines
+< lines sed -n '1-2p'
+< awk 'NR%2' 
+
+//showing only the pairs lines
+< lines sed -n '0-2p'
+< lines awk '(NR+1)%2'   
+
+//In hello world change hello for bye, it must print bye world
+echo "hello world!" |sed -re 's/hello/bye/;s/\s+/ /g;s/\s+//'
+
+//in hello world print hello_world
+echo "hello world!" | tr ' ' '_'
+
+//in hello world! print hello world?
+echo "hello world!" | tr '!' '?'
+
+//in hello world print HELLO WORLD
+echo "hello world!" | tr '[a-z]' '[A-Z]'
+echo "hello world!" | tr '[:lower:]' '[:uper:]'
+
+//If i have a file.csv with files and columns and i want to print only the first column 
+awk -F',' '{print $1}' file.csv
+
+//if i want to print something in ladder (escalerita creo) form
+awk -F '{field=$NR} {print field}' file.csv
+
+//if in my file the columns and files are not equal and i want to print the ones that are not equal
+awk 'length ($0) > 30' file.csv 
+
+//Creating a file
+gedit file1.csv
+
+//show the content of my file
+cat file1.csv
+
+//using for
+for xfile in $(ls *csv)
+do
+
+things i want do do
+
+done
+
+// Linux comands that are new for me
+less grep chomod gedit
+cat echo alias 
